@@ -10,12 +10,12 @@ export default function Todo(props) {
     return (
         <div>
             <ListItem>
-                <Checkbox tabIndex={-1} checked={props.completed}/>
+                <Checkbox onClick={() => props.toggleTodo(props.id)} tabIndex={-1} checked={props.completed}/>
               <ListItemText style={{textDecoration: props.completed ? "line-through" : "none"}}>
                 {props.task}
               </ListItemText>
               <ListItemSecondaryAction>
-                  <IconButton aria-label="Delete">
+                  <IconButton onClick={() => props.removeTodo(props.id)} aria-label="Delete">
                       <Delete />
                   </IconButton>
                   <IconButton aria-label="Edit">
