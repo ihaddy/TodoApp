@@ -4,8 +4,10 @@ import { Checkbox } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
 import { ListItemSecondaryAction } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 
-export default function Todo(props) {
+const styles = {}
+function Todo(props) {
   return (
     <div>
       <ListItem>
@@ -34,3 +36,4 @@ export default function Todo(props) {
     </div>
   );
 }
+export default withStyles(styles)(Todo)
