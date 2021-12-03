@@ -6,6 +6,7 @@ export default function EditTodoForm(props) {
   const [value, handleChange, reset] = useInputState(props.task);
   return (
     <form
+    style={{marginLeft: "1rem", width: "50%"}}
       onSubmit={(e) => {
         e.preventDefault();
         props.editTodo(props.id,value);
@@ -18,6 +19,7 @@ export default function EditTodoForm(props) {
         value={value}
         onChange={handleChange}
         fullWidth
+        autoFocus
       />
     </form>
   );
