@@ -10,35 +10,14 @@ import useTodoState from "./hooks/useTodoState";
 import uuid from "react-uuid";
 
 export default function TodoApp() {
-  const initialTodos = JSON.parse(window.localStorage.getItem("todos")) ||  [
+  const initialTodos =  [
     { id: uuid(), task: "sell home", completed: false },
     { id: uuid(), task: "become hermit", completed: true },
     { id: uuid(), task: "code in react", completed: true },
   ];
 
   const {todos, addTodo, removeTodo, editTodo, toggleTodo } = useTodoState(initialTodos)
-  useEffect(()=> {
-    window.localStorage.setItem("todos", JSON.stringify(todos))
-  }, [todos])
-  // const addTodo = (newTodoText) => {
-  //   setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }]);
-  // };
-  // const removeTodo = (todoId) => {
-  //   const updatedTodo = todos.filter((todo) => todo.id !== todoId);
-  //   setTodos(updatedTodo);
-  // };
-  // const toggleTodo = (todoId) => {
-  //   const updatedTodo = todos.map((todo) =>
-  //     todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-  //   );
-  //   setTodos(updatedTodo);
-  // };
-  // const editTodo = (todoId, newTask) => {
-  //   const updatedTodos = todos.map((todo) =>
-  //     todo.id === todoId ? { ...todo, task: newTask } : todo
-  //   );
-  //   setTodos(updatedTodos)
-  // };
+  
   return (
     <Paper
       style={{

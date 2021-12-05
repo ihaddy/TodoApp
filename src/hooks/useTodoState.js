@@ -1,8 +1,9 @@
-import { useState } from "react";
+
 import uuid from "react-uuid";
+import UseLocalStorageState from "./UseLocalStorageState";
 
 export default initialTodos => {
-    const [todos, setTodos] = useState(initialTodos);
+    const [todos, setTodos] = UseLocalStorageState("todos", initialTodos);
     return {
         todos,
         addTodo: (newTodoText) => {
@@ -16,8 +17,7 @@ export default initialTodos => {
             const updatedTodo = todos.map((todo) =>
               todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
             )
-            setTodos(updatedTodo)
-
+          setTodos(updatedTodo)
         },
         editTodo: (todoId, newTask) => {
             const updatedTodos = todos.map(todo =>
