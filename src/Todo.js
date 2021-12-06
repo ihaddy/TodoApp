@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, memo } from "react";
 import { ListItem, ListItemText } from "@material-ui/core";
 import { Checkbox } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
@@ -13,6 +13,7 @@ const styles = {};
 function Todo(props) {
   const [isEditing, toggle] = useToggle(false);
   const dispatch = useContext(DispatchContext);
+  console.log("rerender" + props.task )
   return (
     <div>
       <ListItem style={{ height: "64px" }}>
@@ -49,4 +50,4 @@ function Todo(props) {
     </div>
   );
 }
-export default withStyles(styles)(Todo);
+export default memo(withStyles(styles)(Todo));
