@@ -7,12 +7,12 @@ import { ListItemSecondaryAction } from "@material-ui/core";
 import { withStyles } from "@material-ui/core";
 import useToggle from "./hooks/useToggle";
 import EditTodoForm from "./EditTodoForm";
-import { TodosContext } from "./context/todos.context";
+import { DispatchContext } from "./context/todos.context";
 
 const styles = {};
 function Todo(props) {
   const [isEditing, toggle] = useToggle(false);
-  const { dispatch } = useContext(TodosContext);
+  const dispatch = useContext(DispatchContext);
   return (
     <div>
       <ListItem style={{ height: "64px" }}>
