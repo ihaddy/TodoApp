@@ -1,6 +1,6 @@
 
 import uuid from "react-uuid";
-import UseLocalStorageState from "./UseLocalStorageState";
+import UseLocalStorageState from "../reducers/UseLocalStorageStateReducer";
 
 export default initialTodos => {
     const [todos, setTodos] = UseLocalStorageState("todos", initialTodos);
