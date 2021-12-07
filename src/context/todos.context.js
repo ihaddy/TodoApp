@@ -11,11 +11,11 @@ const initialTodos = [
 export const TodosContext = createContext(initialTodos);
 
 export function TodosProvider(props) {
-  const { todos, addTodo, removeTodo, editTodo, toggleTodo } =
+  const { todos, addTodo, removeTodo, editTodo, toggleTodo, settodo  } =
     useTodoState(initialTodos);
   return (
     <TodosContext.Provider
-      value={{ todos, addTodo, removeTodo, editTodo, toggleTodo }}
+      value={{ todos, addTodo, removeTodo, editTodo, toggleTodo, settodo }}
     >
       {props.children}
     </TodosContext.Provider>

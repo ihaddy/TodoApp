@@ -8,9 +8,10 @@ import { withStyles } from "@material-ui/core";
 import useToggle from "./hooks/useToggle";
 import EditTodoForm from "./EditTodoForm";
 import {TodosContext} from "./context/todos.context"
+import { SortableElement } from "react-sortable-hoc";
 
 const styles = {};
-function Todo(props) {
+const Todo = SortableElement( props => {
   const [isEditing, toggle] = useToggle(false);
   const { removeTodo, toggleTodo } = useContext(TodosContext)
   return (
@@ -48,5 +49,5 @@ function Todo(props) {
       </ListItem>
     </div>
   );
-}
+} ) 
 export default withStyles(styles)(Todo);

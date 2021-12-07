@@ -24,7 +24,11 @@ export default initialTodos => {
               todo.id === todoId ? { ...todo, task: newTask } : todo
             );
             setTodos(updatedTodos);
-          }
+          },
+        settodo:  (newTodoText) => {
+            setTodos(newTodoText);
+          },
+        
         
     }
 }
