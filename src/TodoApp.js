@@ -6,18 +6,22 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
-import { arrayMove } from "react-sortable-hoc";
+// import { arrayMove } from "react-sortable-hoc";
+import {arrayMoveImmutable} from "array-move";
 import { TodosProvider } from "./context/todos.context";
 import {TodosContext} from "./context/todos.context"
-
+import uuid from "react-uuid";
 
 export default function TodoApp() {
 const { todos, settodo } = useContext(TodosContext)
+// const  todos  = useContext(TodosContext)
+console.log(todos)
 
 
-const onSortEnd = ({ oldIndex, newIndex }) => {
-  settodo( arrayMove(todos, oldIndex, newIndex));}
-  console.log(todos)
+// const onSortEnd = ({ oldIndex, newIndex }) => {
+//   settodo( arrayMoveImmutable(todos, oldIndex, newIndex));}
+//   console.log(todos)
+  
   return (
     <Paper
       style={{
@@ -35,10 +39,10 @@ const onSortEnd = ({ oldIndex, newIndex }) => {
       </AppBar>
       <Grid container justify="center" style={{ marginTop: "1rem" }}>
         <Grid item xs={11} md={8} lg={4}>
-          <TodosProvider>
+          
             <TodoForm />
-            <TodoList distance={3} axis="y" onSortEnd={onSortEnd}></TodoList>
-          </TodosProvider>
+            <TodoList distance={3} axis="y" onSortEnd={({ oldIndex, newIndex }) => {settodo(arrayMoveImmutable(todos, oldIndex, newIndex))}}></TodoList> 
+          
         </Grid>
       </Grid>
     </Paper>

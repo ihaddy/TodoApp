@@ -6,8 +6,9 @@ import Todo from "./Todo";
 import { TodosContext } from "./context/todos.context";
 import { SortableContainer } from "react-sortable-hoc";
 
-const TodoList = SortableContainer((props) => {
-  const { todos } = useContext(TodosContext);
+const TodoList = SortableContainer(() => {
+  const {todos}  = useContext(TodosContext);
+  console.log(todos)
 
   if (todos.length)
     return (
