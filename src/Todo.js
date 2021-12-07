@@ -8,12 +8,13 @@ import { withStyles } from "@material-ui/core";
 import useToggle from "./hooks/useToggle";
 import EditTodoForm from "./EditTodoForm";
 import { DispatchContext } from "./context/todos.context";
+import { SortableElement } from 'react-sortable-hoc'
 
 const styles = {};
-function Todo(props) {
+const Todo = SortableElement(props => {
+  
   const [isEditing, toggle] = useToggle(false);
   const dispatch = useContext(DispatchContext);
-  console.log("rerender" + props.task )
   return (
     <div>
       <ListItem style={{ height: "64px" }}>
@@ -47,7 +48,5 @@ function Todo(props) {
           </>
         )}
       </ListItem>
-    </div>
-  );
-}
+    </div>)} )
 export default memo(withStyles(styles)(Todo));

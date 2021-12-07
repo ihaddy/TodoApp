@@ -4,9 +4,10 @@ import { List } from "@material-ui/core";
 import { Divider } from "@material-ui/core";
 import Todo from "./Todo";
 import { TodosContext } from "./context/todos.context";
+import { SortableContainer } from "react-sortable-hoc";
 
-export default function TodoList(props) {
-  const  todos  = useContext(TodosContext);
+const TodoList = SortableContainer((props) => {
+  const {todos, todox, settodox} = useContext(TodosContext);
   if (todos.length)
     return (
       <Paper>
@@ -14,8 +15,9 @@ export default function TodoList(props) {
           {todos.map((todo, i) => (
             <>
               <Todo
-                task={todo.task}
+                index={i}
                 key={todo.id}
+                task={todo.task}
                 completed={todo.completed}
                 id={todo.id}
               />
@@ -27,4 +29,5 @@ export default function TodoList(props) {
       </Paper>
     );
   return null;
-}
+});
+export default TodoList;

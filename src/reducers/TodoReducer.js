@@ -1,5 +1,5 @@
 import uuid from "react-uuid";
-
+import { arrayMove } from "react-sortable-hoc";
 const reducer = (state, action) => {
     switch(action.type){
         case "ADD": 
@@ -14,6 +14,9 @@ const reducer = (state, action) => {
             return state.map(todo =>
                 todo.id === action.id ? { ...todo, task: action.newTask } : todo
             );
+        case "DRAGANDDROP":
+            return  action.rearrangedState
+            
         default:
             return state
         }

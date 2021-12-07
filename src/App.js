@@ -1,10 +1,14 @@
 
+import {TodosProvider} from "./context/todos.context"
 
-import TodoApp from './TodoApp';
+import TodoApp from "./TodoApp";
 
 function App() {
+  
   return (
-    <TodoApp />
+    <TodosProvider>
+      <TodoApp />
+    </TodosProvider>
   );
 }
 
